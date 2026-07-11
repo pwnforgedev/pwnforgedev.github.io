@@ -17,6 +17,8 @@
       --bg: #0d0e12;
       --fg: #f3f4f6;
       --accent: #00ffcc;
+      --muted: rgba(243, 244, 246, 0.7);
+      --panel: rgba(255, 255, 255, 0.03);
     }
 
     html,
@@ -53,9 +55,16 @@
 
     /* Minimal centered title block */
     .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      min-height: 100vh;
+      padding: 2rem;
       text-align: center;
       z-index: 1;
-      transform: translateY(-1px);
+      transform: translateY(-18px);
     }
 
     .title {
@@ -67,6 +76,37 @@
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.12), 0 0 20px rgba(0, 255, 204, 0.08);
       user-select: none;
       white-space: nowrap;
+    }
+
+    .tagline {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.55rem 1rem;
+      border: 1px solid rgba(0, 255, 204, 0.12);
+      border-radius: 999px;
+      background: var(--panel);
+      color: var(--muted);
+      font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      box-shadow: 0 0 24px rgba(0, 255, 204, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .tagline::before,
+    .tagline::after {
+      color: rgba(0, 255, 204, 0.55);
+      text-shadow: 0 0 10px rgba(0, 255, 204, 0.18);
+    }
+
+    .tagline::before {
+      content: "[";
+    }
+
+    .tagline::after {
+      content: "]";
     }
 
     .title .dot {
@@ -82,9 +122,21 @@
     }
 
     @media (max-width: 600px) {
+      .hero {
+        gap: 0.85rem;
+        padding: 1.5rem;
+        transform: translateY(-10px);
+      }
+
       .title {
         font-size: 1.9rem;
         letter-spacing: 0.08em;
+      }
+
+      .tagline {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.76rem;
+        letter-spacing: 0.14em;
       }
     }
   </style>
@@ -92,6 +144,7 @@
 <body>
   <main class="hero">
     <h1 class="title">pwnforge<span class="dot">.</span>dev</h1>
+    <p class="tagline">OffSec & Development</p>
   </main>
 </body>
 </html>
